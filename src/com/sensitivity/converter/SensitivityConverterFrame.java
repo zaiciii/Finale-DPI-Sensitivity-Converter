@@ -26,6 +26,7 @@ public class SensitivityConverterFrame extends JFrame {
     private JTextField jTextFieldTargetDPI;
     
     private GameButton[] jGameButtons;
+    private GameButton[] jGameButtonsTarget;
     private GameButton jGameButtonSelected;
     private GameButton jGameButtonTargetSelected;
     
@@ -80,7 +81,8 @@ public class SensitivityConverterFrame extends JFrame {
         int xPos = 50;
         int yPos = 105;
         for (int i = 0; i < Game.values().length; i++) {
-            jGameButtons[i] = new GameButton(Game.values()[i].getDisplayName());
+            Game game = Game.values()[i];
+            jGameButtons[i] = new GameButton(game.getDisplayName(), game.getDisplayName());
             jGameButtons[i].setBounds(xPos, yPos, 120, 50);
             final int index = i;
             jGameButtons[i].addActionListener(e -> selectSourceGame(index));
@@ -122,13 +124,14 @@ public class SensitivityConverterFrame extends JFrame {
         // Game Buttons (Target)
         xPos = 50;
         yPos = 375;
-        GameButton[] targetGameButtons = new GameButton[Game.values().length];
+        jGameButtonsTarget = new GameButton[Game.values().length];
         for (int i = 0; i < Game.values().length; i++) {
-            targetGameButtons[i] = new GameButton(Game.values()[i].getDisplayName());
-            targetGameButtons[i].setBounds(xPos, yPos, 120, 50);
+            Game game = Game.values()[i];
+            jGameButtonsTarget[i] = new GameButton(game.getDisplayName(), game.getDisplayName());
+            jGameButtonsTarget[i].setBounds(xPos, yPos, 120, 50);
             final int index = i;
-            targetGameButtons[i].addActionListener(e -> selectTargetGame(index));
-            jFrameMain.add(targetGameButtons[i]);
+            jGameButtonsTarget[i].addActionListener(e -> selectTargetGame(index));
+            jFrameMain.add(jGameButtonsTarget[i]);
             xPos += 130;
             if (xPos > 800) {
                 xPos = 50;
@@ -199,15 +202,12 @@ public class SensitivityConverterFrame extends JFrame {
     }
 
     private void selectTargetGame(int index) {
-        // Find and update target game button
-        Game[] games = Game.values();
-        for (int i = 0; i < games.length; i++) {
-            if (i == index) {
-                selectedTargetGame = games[i];
-                // You might want to add visual feedback for target game selection
-                break;
-            }
+        if (jGameButtonTargetSelected != null) {
+            jGameButtonTargetSelected.setSelected(false);
         }
+        selectedTargetGame = Game.values()[index];
+        jGameButtonsTarget[index].setSelected(true);
+        jGameButtonTargetSelected = jGameButtonsTarget[index];
         performConversion();
     }
 
@@ -240,6 +240,9 @@ public class SensitivityConverterFrame extends JFrame {
         selectedTargetGame = null;
         if (jGameButtonSelected != null) {
             jGameButtonSelected.setSelected(false);
+        }
+        if (jGameButtonTargetSelected != null) {
+            jGameButtonTargetSelected.setSelected(false);
         }
     }
 
