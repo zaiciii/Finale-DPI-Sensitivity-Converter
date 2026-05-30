@@ -94,7 +94,7 @@ Each game has its own sensitivity multiplier based on actual in-game calibration
 - **Text Color**: #DCDCDC (Light Gray)
 
 ## Author
-Created by zaiciii - Final Project
+Created by Jaspher Bibanco, John Yu Miraflor, Gyeoul Tenebro - Final Project BSCS-1C ITEC 50
 
 ## License
 MIT License - Feel free to use and modify!
