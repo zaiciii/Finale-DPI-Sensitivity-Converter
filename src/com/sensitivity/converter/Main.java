@@ -1,3 +1,7 @@
+/*Jaspher T. Bibanco*/
+/*Gyeoul Tenebro*/
+/*John Yu Miraflor*/
+    
 package com.sensitivity.converter;
 
 import javax.swing.*;
