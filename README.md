@@ -1,100 +1,129 @@
-# Sensitivity DPI Converter for Games 🎮
+# 🎮 Sensitivity DPI Converter for Games
 
 A premium Java Swing application with smooth animations and a sleek UI for converting mouse sensitivity across competitive games.
 
-## Supported Games
-- **Valorant** 🏹
-- **Roblox** 🏗️
-- **CS2** (Counter-Strike 2) 🔫
-- **Crossfire** ⚡
-- **Overwatch** 🎪
-- **Apex Legends** 🏃
-- **Fortnite** 🏁
+## 📋 Requirements
 
-## Features
+- **Java 25** (or later)
+- **Maven 3.8.1** (or later)
 
-✨ **Smooth Animations** - Fade-ins, transitions, and hover effects  
-🎨 **Modern Dark Theme** - Clean, professional interface  
-⚡ **Real-time Conversion** - Instant sensitivity calculations  
-🎮 **Clickable Game Selection** - Smooth toggle buttons  
-🎯 **Precision Calculations** - Accurate DPI conversions  
-⭐ **Professional Polish** - Butter-smooth interactions  
+## 🎮 Supported Games
 
-## How to Use
+- Valorant
+- Roblox
+- CS2 (Counter-Strike 2)
+- Crossfire
+- Overwatch
+- Apex Legends
+- Fortnite
 
-1. Launch the application
-2. Click on your **source game** (it will highlight)
-3. Enter your **sensitivity value** and **DPI**
-4. Click on your **target game**
-5. View the **converted sensitivity** in real-time
+## 🚀 Build Instructions
 
-## Project Structure
+### Prerequisites
+1. Install Java 25:
+   - Download from [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) or use [OpenJDK 25](https://jdk.java.net/25/)
+   - Verify installation: `java -version`
 
-```
-src/
-├── com/sensitivity/converter/
-│   ├── Main.java
-│   ├── SensitivityConverterFrame.java
-│   ├── GameButton.java
-│   ├── SensitivityConverter.java
-│   ├── Game.java
-│   └── AnimationUtils.java
-```
+2. Install Maven:
+   - Download from [Apache Maven](https://maven.apache.org/download.cgi)
+   - Verify installation: `mvn -version`
 
-## Technologies Used
+### Build the Project
 
-- **Java Swing** (Custom Components)
-- **Timer-based Animations**
-- **Modern UI Design Patterns**
-- **Real-time Event Listeners**
-- **Custom Graphics Rendering**
-
-## Build & Run
-
-### Using Command Line:
 ```bash
-javac -d bin src/com/sensitivity/converter/*.java
-java -cp bin com.sensitivity.converter.Main
+# Clone the repository
+git clone https://github.com/zaiciii/Finale-DPI-Sensitivity-Converter.git
+cd Finale-DPI-Sensitivity-Converter
+
+# Compile and build with Maven
+mvn clean package
+
+# This will create:
+# - target/SensitivityConverter.jar (executable JAR with all dependencies)
+# - target/SensitivityConverter-all.jar (alternative JAR format)
 ```
 
-### Using IDE (IntelliJ IDEA / Eclipse):
-1. Import project as Java project
-2. Mark `src` as Source Root
-3. Run `Main.java`
+## ▶️ Running the Application
 
-## Requirements
-- Java 8 or higher
-- No external dependencies (uses only standard Java Swing)
-
-## Features Breakdown
-
-### Custom GameButton Component
-- Rounded corners with anti-aliasing
-- Smooth hover effects
-- Selection highlighting
-- Custom color schemes
-
-### Real-time Conversion
-- Automatic calculation as you type
-- Support for custom DPI values
-- Precision to 2 decimal places
-
-### Conversion Formula
-```
-Target Sensitivity = (Source Sensitivity × Source DPI × Source Multiplier) 
-                    / (Target DPI × Target Multiplier)
+### Option 1: Using Maven
+```bash
+mvn exec:java -Dexec.mainClass="com.sensitivity.converter.Main"
 ```
 
-Each game has its own sensitivity multiplier based on actual in-game calibration data.
+### Option 2: Direct JAR Execution
+```bash
+java -jar target/SensitivityConverter.jar
+```
 
-## Color Scheme
-- **Dark Background**: #1E202C
-- **Panel Background**: #2D303E
-- **Accent Color**: #64C8FF (Cyan)
-- **Text Color**: #DCDCDC (Light Gray)
+### Option 3: Command Line (without building JAR)
+```bash
+mvn compile
+mvn exec:java -Dexec.mainClass="com.sensitivity.converter.Main"
+```
 
-## Author
-Created by Jaspher Bibanco, John Yu Miraflor, Gyeoul Tenebro - Final Project BSCS-1C ITEC 50
+## 📝 How to Use
 
-## License
-MIT License - Feel free to use and modify!
+1. **Select Source Game**: Click on the game you're converting FROM
+2. **Enter Source Sensitivity**: Input your current sensitivity value
+3. **Set Source DPI**: Enter your mouse DPI (default: 400)
+4. **Select Target Game**: Click on the game you're converting TO
+5. **Set Target DPI**: Enter the target DPI if different (default: 400)
+6. **View Result**: The converted sensitivity appears automatically
+
+Click **RESET** to clear all fields and start over.
+
+## 🔧 Build Configuration
+
+The `pom.xml` is configured with:
+- **Java 25** as source and target
+- **Maven Shade Plugin** for creating fat JAR
+- **Maven Compiler Plugin** with full Java 25 support
+- **Main class** configured for easy execution
+
+## 📦 Project Structure
+
+```
+Finale-DPI-Sensitivity-Converter/
+├── src/
+│   └── com/sensitivity/converter/
+│       ├── Main.java                 # Application entry point
+│       ├── SensitivityConverterFrame.java  # Main UI window
+│       ├── GameButton.java           # Custom styled button
+│       ├── Game.java                 # Game enum with multipliers
+│       └── SensitivityConverter.java  # Conversion logic
+├── pom.xml                           # Maven configuration
+├── README.md                         # This file
+└── LICENSE                           # MIT License
+```
+
+## 💡 Features
+
+- ✨ Smooth animations and modern UI
+- 🎮 Support for 7 competitive games
+- 🎯 Real-time conversion
+- 🌙 Dark theme optimized for gaming
+- ⚡ No external dependencies - pure Java Swing
+- 🔒 MIT Licensed
+
+## 🛠️ Troubleshooting
+
+### "mvn: command not found"
+- Ensure Maven is installed and added to your system PATH
+
+### "Java 25 not found"
+- Install Java 25 from [Oracle JDK](https://www.oracle.com/java/technologies/downloads/)
+- Set `JAVA_HOME` environment variable to your Java 25 installation
+
+### "Could not find or load main class"
+- Ensure you built the project: `mvn clean package`
+- Run from the project root directory
+
+## 📄 License
+
+MIT License - See LICENSE file for details
+
+## 👨‍💻 Authors
+
+- Jaspher T. Bibanco
+- Gyeoul Tenebro
+- John Yu Miraflor
